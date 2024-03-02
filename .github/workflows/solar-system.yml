@@ -47,5 +47,19 @@ jobs:
           uses: actions/setup-node@v3
           with:
             node-version: 18
+
+        - name: Install Dependencies
+          run: npm install
+
+        - name: run code-coverage
+          run: npm run code-coverage
+          if: always()
+
+        - name: Archive code coverage results
+          uses: actions/upload-artifact@v4
+          with:
+            name: Code-Coverage-Result
+            path: coverage
+            retention-days: 5
     
          
